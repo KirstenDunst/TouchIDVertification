@@ -19,20 +19,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
     UIButton *myCreateButton = [UIButton buttonWithType:UIButtonTypeCustom];
     myCreateButton.frame = CGRectMake(0, 0, 100, 100);
     [myCreateButton setBackgroundColor:[UIColor grayColor]];
     [myCreateButton setTitle:@"Choose" forState:UIControlStateNormal];
     [myCreateButton addTarget:self action:@selector(buttonChoose:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myCreateButton];
-    
-    
-}
 
+}
 
 //调用指纹识别
 - (void)buttonChoose:(UIButton *)sender{
+    
     
     TouchIDVerification *touch = [[TouchIDVerification alloc]init];
     [touch touchIDVericationWithMessage:@"请按home键指纹支付" ForBack:^(BOOL isSuccess, BOOL supportTouchID, NSError *error) {
@@ -41,7 +39,6 @@
         NSLog(@"是否是主线程：%d",[NSThread isMainThread]);
     }];
     
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
