@@ -13,6 +13,7 @@
 
 
 /*              三次机会
+ @param    Str        显示的提醒字段
  @param   isSuccess   指纹识别是否成功
  @param   supportTouchID    是否支持指纹识别字段返回
  @param   error       指纹识别失败的原因
@@ -23,7 +24,7 @@
  */
 
 
-- (void)touchIDVericationForBack:(void(^)(BOOL isSuccess,BOOL supportTouchID,NSError *error))block OrCanceelForPasswordInMainThread:(void(^)(BOOL isForPassword,BOOL isMainThreadOther))forPassword;
+- (void)touchIDVericationWithMessage:(NSString *)Str ForBack:(void(^)(BOOL isSuccess,BOOL supportTouchID,NSError *error))block OrCanceelForPasswordInMainThread:(void(^)(BOOL isForPassword,BOOL isMainThreadOther))forPassword;
 
 
 @end

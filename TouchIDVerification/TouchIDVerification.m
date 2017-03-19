@@ -12,14 +12,14 @@
 
 @implementation TouchIDVerification
 
-- (void)touchIDVericationForBack:(void(^)(BOOL isSuccess,BOOL supportTouchID ,NSError *error))block OrCanceelForPasswordInMainThread:(void(^)(BOOL isForPassword,BOOL isMainThreadOther))forPassword{
+- (void)touchIDVericationWithMessage:(NSString *)Str ForBack:(void(^)(BOOL isSuccess,BOOL supportTouchID ,NSError *error))block OrCanceelForPasswordInMainThread:(void(^)(BOOL isForPassword,BOOL isMainThreadOther))forPassword{
     //创建LAContext
     LAContext *context = [LAContext new];
     //这个属性是设置指纹输入失败之后的弹出框的选项
     context.localizedFallbackTitle = @"输入密码？";
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"请按home键指纹解锁" reply:^(BOOL success, NSError * _Nullable error) {
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:Str reply:^(BOOL success, NSError * _Nullable error) {
             if (success) {
                 if (block) {
                     block(YES,YES,nil);

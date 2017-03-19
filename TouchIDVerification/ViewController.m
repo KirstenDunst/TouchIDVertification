@@ -35,7 +35,7 @@
 - (void)buttonChoose:(UIButton *)sender{
     
     TouchIDVerification *touch = [[TouchIDVerification alloc]init];
-    [touch touchIDVericationForBack:^(BOOL isSuccess, BOOL supportTouchID, NSError *error) {
+    [touch touchIDVericationWithMessage:@"请按home键指纹支付" ForBack:^(BOOL isSuccess, BOOL supportTouchID, NSError *error) {
         NSLog(@"是否验证成功：%d，是否支持指纹识别：%d，错误返回消息：%@",isSuccess,supportTouchID,error.localizedDescription);
     } OrCanceelForPasswordInMainThread:^(BOOL isForPassword, BOOL isMainThreadOther) {
         NSLog(@"是否是主线程：%d",[NSThread isMainThread]);
